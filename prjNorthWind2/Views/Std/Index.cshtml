@@ -1,0 +1,91 @@
+﻿@model IEnumerable<prjNorthWind2.Models.tEmp>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+
+        <form action="@Url.Action("Index")" method="post">
+            <p>
+                關鍵字：
+                <input type="text" required name="keyword" />
+                <input type="submit" value="查詢" />
+            </p>
+
+        </form>
+
+    <p>@ViewBag.StdCount</p>
+
+
+    </p>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Stdid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StdNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StdCName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StdEName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StdCClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StdCNum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stdid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StdNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StdCName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StdEName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StdCClass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StdCNum)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
